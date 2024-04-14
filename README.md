@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [V] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [V] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [V] Commit: `Create Notification service struct skeleton.`
+    -   [V] Commit: `Implement subscribe function in Notification service.`
+    -   [V] Commit: `Implement subscribe function in Notification controller.`
+    -   [V] Commit: `Implement unsubscribe function in Notification service.`
+    -   [V] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [V] Commit: `Implement receive_notification function in Notification service.`
+    -   [V] Commit: `Implement receive function in Notification controller.`
+    -   [V] Commit: `Implement list_messages function in Notification service.`
+    -   [V] Commit: `Implement list function in Notification controller.`
+    -   [V] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -94,3 +94,15 @@ Penggunaan RwLock<> diperlukan dalam kasus ini karena memungkinkan akses bersama
 Secara default Rust tidak mengizinkan mutate langsung terhadap variabel statis karena mengutamakan keamanan thread dan mencegah adanya race condition pada data. 
 
 #### Reflection Subscriber-2
+>1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Saya hanya melihatnya secara sekilas dan menemukan bahwa di dalam `src/lib.rs` terdapat insialisasi variabel static menggunakan `lazy_static`, seperti `REQWEST_CLIENT` yang digunakan untuk membuat HTTP request dan `APP_CONFIG` untuk menyimpan konfigurasi aplikasi. Selain itu, terdapat fungsi `compose_error_response` yang digunakan untuk membuat respons error kustom berdasarkan status code dan pesan yang diberikan.
+
+>2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+Penggunaan Observer pattern memudahkan penambahan subscriber baru karena kita hanya perlu membuat implementasi baru dari trait `Subscriber` dan mendaftarkannya ke `NotificationService` dimana hal ini akan menambahkan ke list subscribers yang akan selalu mendapatkan update dari publisher.
+
+
+>3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Untuk saat ini saya belum mencoba membuat own test dan menyempurnakan dokumentasi Postman. Namun, karena pernah mencoba menggunakan Postman pada saat mata kuliah PBP dulu, saya merasa bahwa Postman sangat berguna untuk menguji fungsionalitas API dengan mengirimkan request HTTP sambil melihat dan menganalisis apakah response yang diberikan sesuai dengan harapan saya.
